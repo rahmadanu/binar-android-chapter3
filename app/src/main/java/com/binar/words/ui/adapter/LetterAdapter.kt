@@ -2,9 +2,12 @@ package com.binar.words.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.LetterListItemBinding
+import com.binar.words.model.Word
 
 class LetterAdapter : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
 
@@ -14,10 +17,20 @@ class LetterAdapter : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
         this.onItemClickCallback = onItemClickCallback
     }
 
-    private val letterList = ArrayList<String>()
+    private val diffCallback = object : DiffUtil.ItemCallback<Word>() {
+        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
+            return oldItem.letter == newItem.letter
+        }
 
-    fun submitData(list: List<String>) {
-        letterList.addAll(list)
+        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean {
+            return oldItem.hashCode() == newItem.hashCode()
+        }
+    }
+
+    private val differ = AsyncListDiffer(this, diffCallback)
+
+    fun submitData(list: ArrayList<Word>) {
+        differ.submitList(list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,19 +39,21 @@ class LetterAdapter : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val letter = letterList[position]
 
         with(holder) {
-            binding.btnLetter.text = letter
+            with(differ.currentList[position]) {
 
-            binding.btnLetter.setOnClickListener {
-                onItemClickCallback.onItemClicked(binding.btnLetter.text.toString())
+                binding.btnLetter.text = letter
+
+                binding.btnLetter.setOnClickListener {
+                    onItemClickCallback.onItemClicked(binding.btnLetter.text.toString())
+                }
             }
         }
 
     }
 
-    override fun getItemCount(): Int = letterList.size
+    override fun getItemCount(): Int = differ.currentList.size
 
     class ViewHolder (val binding: LetterListItemBinding) : RecyclerView.ViewHolder(binding.root)
 }

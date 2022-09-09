@@ -3,6 +3,7 @@ package com.binar.words.ui.fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentWordBinding
+import com.binar.words.model.Word
 import com.binar.words.ui.adapter.WordAdapter
 
 class WordFragment : Fragment() {
@@ -33,9 +35,19 @@ class WordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setRecyclerView()
+    }
+
+    private fun setRecyclerView() {
         val letter = args.letter
 
-        val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
+        val wordRawList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
+
+        val wordList = ArrayList<Word>()
+
+        for (element in wordRawList) {
+            wordList.add(Word(word = element))
+        }
 
         val adapter = WordAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
@@ -49,7 +61,6 @@ class WordFragment : Fragment() {
                 openWebPage(data)
             }
         })
-
     }
 
     fun openWebPage(word: String) {

@@ -2,6 +2,7 @@ package com.binar.words.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.GridLayout
 import android.widget.Toast
@@ -17,6 +18,7 @@ import com.binar.words.R
 import com.binar.words.`interface`.OnDataPass
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentLetterBinding
+import com.binar.words.model.Word
 import com.binar.words.ui.adapter.LetterAdapter
 
 class LetterFragment : Fragment() {
@@ -45,7 +47,13 @@ class LetterFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        val list = resources.getStringArray(R.array.letter).toList()
+        val letterRawList = resources.getStringArray(R.array.letter).toList()
+
+        val letterList = ArrayList<Word>()
+
+        for (element in letterRawList) {
+            letterList.add(Word(letter = element))
+        }
 
         val adapter = LetterAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
@@ -53,7 +61,7 @@ class LetterFragment : Fragment() {
         binding.rvLetter.adapter = adapter
         binding.rvLetter.layoutManager = layoutManager
 
-        adapter.submitData(list)
+        adapter.submitData(letterList)
 
         adapter.setOnItemClickCallback(object : OnItemClickCallback{
             override fun onItemClicked(data: String) {
