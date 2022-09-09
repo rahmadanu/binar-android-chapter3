@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="letter">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+    </string-array>
+
+    <string-array name="word">
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Bxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Cxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Dxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Exe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Fxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Gxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Hxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Ixe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+        <item>Jxe</item>
+        <item>Axe</item>
+        <item>Axe</item>
+    </string-array>
+</resources>
