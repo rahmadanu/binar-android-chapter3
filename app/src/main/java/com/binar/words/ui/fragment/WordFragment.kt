@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnItemClickCallback
@@ -35,7 +36,7 @@ class WordFragment : Fragment() {
         val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
 
         val adapter = WordAdapter()
-        val layoutManager = LinearLayoutManager(requireContext())
+        val layoutManager = GridLayoutManager(requireContext(), 2)
 
         binding.rvWord.adapter = adapter
         binding.rvWord.layoutManager = layoutManager

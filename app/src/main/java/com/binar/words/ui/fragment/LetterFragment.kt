@@ -29,11 +29,6 @@ class LetterFragment : Fragment() {
         onDataPass = context as OnDataPass
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,26 +57,9 @@ class LetterFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : OnItemClickCallback{
             override fun onItemClicked(data: String) {
-                Toast.makeText(requireContext(), "this is $data", Toast.LENGTH_SHORT).show()
                 onDataPass.onDataPass(data)
             }
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.letter_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when (item.icon) {
-            ContextCompat.getDrawable(requireContext(), R.drawable.ic_view_grid_24) -> {
-                GridLayoutManager(requireContext(), 3)
-            } else -> {
-                LinearLayoutManager(requireContext())
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {
