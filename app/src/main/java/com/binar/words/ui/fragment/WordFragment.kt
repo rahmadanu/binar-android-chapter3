@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
@@ -33,7 +34,7 @@ class WordFragment : Fragment() {
 
         val letter = arguments?.getString("letter")!!
 
-        activity?.actionBar?.title = "Words start with $letter"
+        (activity as AppCompatActivity).supportActionBar?.title = "Words that start with $letter"
         val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
 
         val adapter = WordAdapter()
