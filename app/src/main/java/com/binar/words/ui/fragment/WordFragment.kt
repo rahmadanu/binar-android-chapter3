@@ -27,12 +27,7 @@ class WordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var letter = "B"
-
-        if (arguments != null) {
-
-            letter = arguments?.getString("letter")!!
-        }
+        val letter = arguments?.getString("letter")!!
 
         val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
 

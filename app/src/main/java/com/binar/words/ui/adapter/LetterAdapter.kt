@@ -1,34 +1,17 @@
 package com.binar.words.ui.adapter
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.*
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.words.R
 import com.binar.words.databinding.LetterListItemBinding
+import com.binar.words.databinding.WordListItemBinding
+import com.binar.words.ui.fragment.LetterFragment
 import com.binar.words.ui.fragment.WordFragment
-import com.binar.words.ui.model.Word
-class LetterAdapter(private val fragment: Fragment) : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
 
-/*    private val diffCallBack = object : DiffUtil.ItemCallback<Word>() {
-        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
-            return oldItem.letter == newItem.letter
-        }
-
-        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
-        }
-    }
-
-    private val differ = AsyncListDiffer(this, diffCallBack)*/
+class LetterAdapter(val fragment: LetterFragment) : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -53,7 +36,7 @@ class LetterAdapter(private val fragment: Fragment) : RecyclerView.Adapter<Lette
         with(holder) {
             binding.btnLetter.text = letter
 
-            itemView.setOnClickListener {
+            binding.btnLetter.setOnClickListener {
                 onItemClickCallback.onItemClicked(binding.btnLetter.text.toString())
             }
         }
@@ -69,3 +52,15 @@ class LetterAdapter(private val fragment: Fragment) : RecyclerView.Adapter<Lette
     }
 }
 
+
+/*    private val diffCallBack = object : DiffUtil.ItemCallback<Word>() {
+        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
+            return oldItem.letter == newItem.letter
+        }
+
+        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean {
+            return oldItem.hashCode() == newItem.hashCode()
+        }
+    }
+
+    private val differ = AsyncListDiffer(this, diffCallBack)*/

@@ -1,4 +1,4 @@
-package com.binar.words.ui.model
+package com.binar.words.model
 
 data class Word(
     val letter:String = "",

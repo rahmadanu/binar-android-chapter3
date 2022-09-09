@@ -1,25 +1,24 @@
 package com.binar.words.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
+import com.binar.words.`interface`.OnDataPass
 import com.binar.words.databinding.FragmentLetterBinding
 import com.binar.words.ui.adapter.LetterAdapter
-import com.binar.words.ui.model.Word
-import java.util.*
 
 class LetterFragment : Fragment() {
 
     private var _binding: FragmentLetterBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var onDataPass: OnDataPass
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,22 +46,14 @@ class LetterFragment : Fragment() {
 
         adapter.submitData(list)
 
+        onDataPass = activity as OnDataPass
+
         adapter.setOnItemClickCallback(object : LetterAdapter.OnItemClickCallback {
             override fun onItemClicked(letter: String) {
-                val wordFragment = WordFragment()
-
-                val bundle = Bundle()
-                bundle.putString("letter", letter)
-                wordFragment.arguments = bundle
-
-                val fragmentManager = parentFragmentManager
-                fragmentManager.commit {
-                    addToBackStack(null)
-                    replace(R.id.nav_host_fragment_container, WordFragment())
-                }
+                Toast.makeText(requireContext(), "this is $letter", Toast.LENGTH_SHORT).show()
+                onDataPass.onDataPass(letter)
             }
         })
-
     }
 
     override fun onDestroyView() {

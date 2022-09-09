@@ -13,42 +13,44 @@
         <item>J</item>
         <item>K</item>
         <item>L</item>
-        <item>M</item>
-        <item>N</item>
-        <item>O</item>
-        <item>P</item>
     </string-array>
 
     <string-array name="word">
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Bxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Cxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Dxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Exe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Fxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Gxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Hxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Ixe</item>
-        <item>Axe</item>
-        <item>Axe</item>
-        <item>Jxe</item>
-        <item>Axe</item>
-        <item>Axe</item>
+        <item>Attach</item>
+        <item>Application</item>
+        <item>Activity</item>
+        <item>Break</item>
+        <item>Button</item>
+        <item>Board</item>
+        <item>Coroutines</item>
+        <item>Concurrency</item>
+        <item>Context</item>
+        <item>Debug</item>
+        <item>Detach</item>
+        <item>Delete</item>
+        <item>Each</item>
+        <item>Evaluate</item>
+        <item>Emerge</item>
+        <item>Fragment</item>
+        <item>Frame</item>
+        <item>Fetch</item>
+        <item>Get</item>
+        <item>Geek</item>
+        <item>Garbage</item>
+        <item>Hash</item>
+        <item>Hilt</item>
+        <item>Hope</item>
+        <item>Injection</item>
+        <item>Iteration</item>
+        <item>If Else</item>
+        <item>Jetpack</item>
+        <item>Justice</item>
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Koin</item>
+        <item>Kit</item>
+        <item>Layout</item>
+        <item>Let</item>
+        <item>Liskov Substitution</item>
     </string-array>
 </resources>

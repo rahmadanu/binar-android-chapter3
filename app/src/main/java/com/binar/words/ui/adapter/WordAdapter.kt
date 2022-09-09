@@ -3,6 +3,7 @@ package com.binar.words.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.binar.words.databinding.LetterListItemBinding
 import com.binar.words.databinding.WordListItemBinding
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>(){
@@ -14,7 +15,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = WordListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = LetterListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -28,5 +29,5 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>(){
 
     override fun getItemCount(): Int = wordList.size
 
-    class ViewHolder(val binding: WordListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: LetterListItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
