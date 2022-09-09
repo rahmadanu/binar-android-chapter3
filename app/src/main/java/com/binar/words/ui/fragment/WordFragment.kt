@@ -33,6 +33,7 @@ class WordFragment : Fragment() {
 
         val letter = arguments?.getString("letter")!!
 
+        activity?.actionBar?.title = "Words start with $letter"
         val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
 
         val adapter = WordAdapter()
