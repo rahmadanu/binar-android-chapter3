@@ -18,7 +18,7 @@ Words is an app that shows a list of alphabet letters and a list of words, user 
 
 <p align="center">
   <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189379015-03783584-fd18-4f2b-9162-ef688c3283c1.png">
-  <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189379031-a291d2c4-ceb4-4924-a5f6-cc962c0eb3f8.png">
+  <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189379604-bad08803-847e-4f3d-81c6-0611ad8fd6fc.png">
 </p>
 
 <br></br>
