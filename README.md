@@ -16,14 +16,14 @@ Binar Academy x Kampus Merdeka - Android Engineering: Chapter 3 Challenge
 
 Words is an app that shows a list of alphabet letters and a list of words, user can navigate to Google search or any web)
 
-# LetterFragment
+#### LetterFragment
 <p align="center">
   <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189379015-03783584-fd18-4f2b-9162-ef688c3283c1.png">
 </p>
 
 <br></br>
 
-# WordFragment
+#### WordFragment
 <p align="center">
   <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189379604-bad08803-847e-4f3d-81c6-0611ad8fd6fc.png">
 </p>
