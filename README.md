@@ -14,7 +14,7 @@ Binar Academy x Kampus Merdeka - Android Engineering: Chapter 3 Challenge
 
 ## App Preview
 
-Words is an app that shows a list of alphabet letters and a list of words, user can navigate to Google search or any web)
+Words is an app that shows a list of alphabet letters and a list of words, user can navigate to Google search or any web
 
 <br></br>
 <br></br>
