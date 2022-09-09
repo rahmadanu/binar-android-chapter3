@@ -1,17 +1,12 @@
 package com.binar.words.ui.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
-import com.binar.words.R
+import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.LetterListItemBinding
-import com.binar.words.databinding.WordListItemBinding
-import com.binar.words.ui.fragment.LetterFragment
-import com.binar.words.ui.fragment.WordFragment
 
-class LetterAdapter(val fragment: LetterFragment) : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
+class LetterAdapter : RecyclerView.Adapter<LetterAdapter.ViewHolder>(){
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -46,21 +41,4 @@ class LetterAdapter(val fragment: LetterFragment) : RecyclerView.Adapter<LetterA
     override fun getItemCount(): Int = letterList.size
 
     class ViewHolder (val binding: LetterListItemBinding) : RecyclerView.ViewHolder(binding.root)
-
-    interface OnItemClickCallback {
-        fun onItemClicked(letter: String)
-    }
 }
-
-
-/*    private val diffCallBack = object : DiffUtil.ItemCallback<Word>() {
-        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
-            return oldItem.letter == newItem.letter
-        }
-
-        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
-        }
-    }
-
-    private val differ = AsyncListDiffer(this, diffCallBack)*/

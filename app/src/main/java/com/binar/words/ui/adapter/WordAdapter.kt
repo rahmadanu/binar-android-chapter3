@@ -3,10 +3,16 @@ package com.binar.words.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.LetterListItemBinding
-import com.binar.words.databinding.WordListItemBinding
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>(){
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     private val wordList = ArrayList<String>()
 
@@ -24,6 +30,10 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ViewHolder>(){
 
         with(holder) {
             binding.btnLetter.text = word
+
+            binding.btnLetter.setOnClickListener {
+                onItemClickCallback.onItemClicked(word)
+            }
         }
     }
 

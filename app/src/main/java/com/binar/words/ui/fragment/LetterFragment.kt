@@ -1,15 +1,19 @@
 package com.binar.words.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.GridLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.binar.words.R
 import com.binar.words.`interface`.OnDataPass
+import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentLetterBinding
 import com.binar.words.ui.adapter.LetterAdapter
 
@@ -19,6 +23,16 @@ class LetterFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var onDataPass: OnDataPass
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onDataPass = context as OnDataPass
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +46,13 @@ class LetterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-/*
-        val letter = resources.getStringArray(R.array.letter)
-        val word = resources.getStringArray(R.array.word)
-*/
+        setRecyclerView()
+    }
+
+    private fun setRecyclerView() {
         val list = resources.getStringArray(R.array.letter).toList()
 
-        val adapter = LetterAdapter(this)
+        val adapter = LetterAdapter()
         val layoutManager = LinearLayoutManager(requireContext())
 
         binding.rvLetter.adapter = adapter
@@ -46,14 +60,28 @@ class LetterFragment : Fragment() {
 
         adapter.submitData(list)
 
-        onDataPass = activity as OnDataPass
-
-        adapter.setOnItemClickCallback(object : LetterAdapter.OnItemClickCallback {
-            override fun onItemClicked(letter: String) {
-                Toast.makeText(requireContext(), "this is $letter", Toast.LENGTH_SHORT).show()
-                onDataPass.onDataPass(letter)
+        adapter.setOnItemClickCallback(object : OnItemClickCallback{
+            override fun onItemClicked(data: String) {
+                Toast.makeText(requireContext(), "this is $data", Toast.LENGTH_SHORT).show()
+                onDataPass.onDataPass(data)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.letter_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.icon) {
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_view_grid_24) -> {
+                GridLayoutManager(requireContext(), 3)
+            } else -> {
+                LinearLayoutManager(requireContext())
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(), OnDataPass{
         fragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment_container, wordFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
     }
 }
