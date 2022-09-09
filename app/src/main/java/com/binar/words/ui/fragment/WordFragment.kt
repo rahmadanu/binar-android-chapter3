@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnItemClickCallback
@@ -17,6 +18,8 @@ class WordFragment : Fragment() {
 
     private var _binding: FragmentWordBinding? = null
     private val binding get() = _binding!!
+
+    private val args: WordFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +33,7 @@ class WordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val letter = arguments?.getString("letter")!!
+        val letter = args.letter
 
         val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
 
@@ -46,6 +49,7 @@ class WordFragment : Fragment() {
                 openWebPage(data)
             }
         })
+
     }
 
     fun openWebPage(word: String) {
