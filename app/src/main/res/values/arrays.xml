@@ -19,38 +19,50 @@
         <item>Attach</item>
         <item>Application</item>
         <item>Activity</item>
+        <item>Android</item>
         <item>Break</item>
         <item>Button</item>
         <item>Board</item>
+        <item>Back stack</item>
         <item>Coroutines</item>
         <item>Concurrency</item>
         <item>Context</item>
+        <item>Core</item>
         <item>Debug</item>
         <item>Detach</item>
         <item>Delete</item>
+        <item>Dust</item>
         <item>Each</item>
         <item>Evaluate</item>
         <item>Emerge</item>
+        <item>Estimate</item>
         <item>Fragment</item>
         <item>Frame</item>
         <item>Fetch</item>
+        <item>Fork</item>
         <item>Get</item>
         <item>Geek</item>
         <item>Garbage</item>
+        <item>Greek</item>
         <item>Hash</item>
         <item>Hilt</item>
         <item>Hope</item>
+        <item>Heap</item>
         <item>Injection</item>
         <item>Iteration</item>
         <item>If Else</item>
+        <item>Interface segregation</item>
         <item>Jetpack</item>
         <item>Justice</item>
         <item>Java</item>
+        <item>Jacket</item>
         <item>Kotlin</item>
         <item>Koin</item>
         <item>Kit</item>
+        <item>King</item>
         <item>Layout</item>
         <item>Let</item>
         <item>Liskov Substitution</item>
+        <item>Leap</item>
     </string-array>
 </resources>
