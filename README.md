@@ -5,7 +5,7 @@ Binar Academy x Kampus Merdeka - Android Engineering: Chapter 3 Challenge
 
 - [x] Using Git (2 branch: with navigation component and without navigation component)
 - [x] Activity and Fragment
-- [x] RecyclerView (DiffUtil)
+- [x] RecyclerView (DiffUtil added)
 - [x] Navigation Component (single activity)
 - [x] Send data and display (bundle and safeargs)
 - [x] Intent (implicit intent to search data on Web)
