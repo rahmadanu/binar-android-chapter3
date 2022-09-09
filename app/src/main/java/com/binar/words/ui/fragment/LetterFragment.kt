@@ -60,8 +60,6 @@ class LetterFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : OnItemClickCallback{
             override fun onItemClicked(data: String) {
-                Toast.makeText(requireContext(), "this is $data", Toast.LENGTH_SHORT).show()
-
                 val action = LetterFragmentDirections.actionLetterFragmentToWordFragment(data)
                 findNavController().navigate(action)
             }

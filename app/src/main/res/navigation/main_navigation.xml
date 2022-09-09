@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_letter" >
         <action
             android:id="@+id/action_letterFragment_to_wordFragment"
-            app:destination="@id/wordFragment" />
+            app:destination="@id/wordFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/wordFragment"
