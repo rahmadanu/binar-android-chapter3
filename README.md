@@ -33,6 +33,12 @@ Words is an app that shows a list of alphabet letters and a list of words, user 
 
 <br></br>
 
+#### Clicked button
+<p align="center">
+  <img width=360 height=720 src="https://user-images.githubusercontent.com/96525733/189381235-c0d8d14f-5831-4db0-9fe0-d3d41209afa2.png">
+</p>
+
+<br></br>
 ## Author
 
 [@rdanusadewa](https://www.instagram.com/rdanusadewa/)
