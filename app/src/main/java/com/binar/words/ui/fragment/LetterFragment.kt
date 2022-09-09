@@ -26,11 +26,6 @@ class LetterFragment : Fragment() {
     private var _binding: FragmentLetterBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,22 +66,6 @@ class LetterFragment : Fragment() {
                 findNavController().navigate(action)
             }
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.letter_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when (item.icon) {
-            ContextCompat.getDrawable(requireContext(), R.drawable.ic_view_grid_24) -> {
-                GridLayoutManager(requireContext(), 3)
-            } else -> {
-                LinearLayoutManager(requireContext())
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {
