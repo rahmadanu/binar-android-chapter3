@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentWordBinding
+import com.binar.words.ui.activity.MainActivity
 import com.binar.words.ui.adapter.WordAdapter
 
 class WordFragment : Fragment() {
@@ -31,6 +32,8 @@ class WordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).showUpButton()
+        (activity as MainActivity).clickUpButton()
 
         val letter = arguments?.getString("letter")!!
 

@@ -2,20 +2,17 @@ package com.binar.words.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
-import android.widget.GridLayout
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.binar.words.R
 import com.binar.words.`interface`.OnDataPass
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentLetterBinding
+import com.binar.words.ui.activity.MainActivity
 import com.binar.words.ui.adapter.LetterAdapter
 
 class LetterFragment : Fragment() {
@@ -42,6 +39,7 @@ class LetterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Words"
+        (activity as MainActivity).hideUpButton()
 
         setRecyclerView()
     }

@@ -2,6 +2,11 @@ package com.binar.words.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.*
 import com.binar.words.R
 import com.binar.words.`interface`.OnDataPass
@@ -48,5 +53,32 @@ class MainActivity : AppCompatActivity(), OnDataPass{
             .replace(R.id.nav_host_fragment_container, wordFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
+    }
+
+    fun showUpButton() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    fun hideUpButton() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    fun clickUpButton() {
+
+        addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                return
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    android.R.id.home -> {
+                        supportFragmentManager.popBackStack()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        })
     }
 }
