@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnDataPass
@@ -22,6 +24,8 @@ class LetterFragment : Fragment() {
 
     private lateinit var onDataPass: OnDataPass
 
+    private val viewModel: LetterViewModel by activityViewModels()
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         onDataPass = context as OnDataPass
@@ -36,12 +40,28 @@ class LetterFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Words"
         (activity as MainActivity).hideUpButton()
 
-        setRecyclerView()
+        clickSearchButton()
+    }
+
+    private fun clickSearchButton() {
+        binding.btnSearch.setOnClickListener {
+            val letter = binding.etLetter.text.toString()
+            if (letter.isEmpty()) {
+                binding.etLetter.error = "Isi terlebih dahulu"
+            } else {
+                viewModel.getLetter(letter)
+
+                val activity = (activity as MainActivity)
+                val destination = WordFragment()
+                activity.goToNextFragment(destination)
+            }
+        }
     }
 
     private fun setRecyclerView() {

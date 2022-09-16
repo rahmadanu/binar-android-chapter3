@@ -8,8 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.words.R
 import com.binar.words.`interface`.OnItemClickCallback
 import com.binar.words.databinding.FragmentWordBinding
@@ -20,6 +21,8 @@ class WordFragment : Fragment() {
 
     private var _binding: FragmentWordBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: LetterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,18 +38,21 @@ class WordFragment : Fragment() {
         (activity as MainActivity).showUpButton()
         (activity as MainActivity).clickUpButton()
 
-        val letter = arguments?.getString("letter")!!
-
-        (activity as AppCompatActivity).supportActionBar?.title = "Words that start with $letter"
-        val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(letter) }
-
         val adapter = WordAdapter()
         val layoutManager = GridLayoutManager(requireContext(), 2)
 
         binding.rvWord.adapter = adapter
         binding.rvWord.layoutManager = layoutManager
 
-        adapter.submitData(wordList)
+        viewModel.letter.observe(viewLifecycleOwner) { letter ->
+            (activity as AppCompatActivity).supportActionBar?.title =
+                "Words that start with $letter"
+            val wordList = resources.getStringArray(R.array.word).toList().filter { word -> word.startsWith(
+                letter, ignoreCase = true
+            ) }
+            adapter.submitData(wordList)
+        }
+
         adapter.setOnItemClickCallback(object : OnItemClickCallback {
             override fun onItemClicked(data: String) {
                 openWebPage(data)

@@ -34,9 +34,12 @@ class MainActivity : AppCompatActivity(), OnDataPass{
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+    fun goToNextFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.commit {
+            addToBackStack(null)
+            replace(R.id.nav_host_fragment_container, fragment)
+        }
     }
 
     override fun onDataPass(letter: String) {
@@ -80,5 +83,10 @@ class MainActivity : AppCompatActivity(), OnDataPass{
                 }
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
